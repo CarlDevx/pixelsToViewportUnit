@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.app{
+  color: #fff;
+  width: 45vw;
+  height: 50vh;
+  /*border: 1px red solid;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+#title{
+  margin-bottom: 4rem;
+}
+input{
+  width: 75%;
+  height: 7%;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+button {
+  width: 30%;
+  height: 7%;
+  border-radius: .3rem;
+}
