@@ -15,16 +15,26 @@ function App() {
     setPixelsValue(e.target.value)
   }
   const calculeResposivity = ()=>{
-    let widthPercentage = (pixelsValue/widthInputValue) * 100
-    let heightPercentage = (pixelsValue/heightInputValue) * 100
-    setResult(`${pixelsValue} correspondem a: ${widthPercentage}vw e a ${heightPercentage}hw.`)
+    if((widthInputValue && heightInputValue) && pixelsValue){
+      if (widthInputValue == 0 || heightInputValue == 0 || pixelsValue == 0){
+        setResult('zero não é um numero valido, verifique os campos e tente novamente!')
+      }
+      else{
+        let heightPercentage = (pixelsValue/heightInputValue) * 100
+        let widthPercentage = (pixelsValue/widthInputValue) * 100
+        setResult(`${pixelsValue} correspondem a: ${widthPercentage.toFixed(2)}vw e a ${heightPercentage.toFixed(2)}hw.`)
+      }
+    }
+    else{
+      setResult("verifique os campos e tente novamente!")
+    }
   }
   return (
     <div className='app'>
       <p>Pixels to ViewPort unit</p>
-      <p id='title'>Digite a largura e altura base para os cálculos</p>
-      <input type='number' placeholder='altura base' id='heightInput' onChange={getHeight} required/>
-      <input type='number' placeholder='largura base' id='widthInput' onChange={getWidth} required/>
+      <p id='title'>Digite a largura e altura base para os cálculos.</p>
+      <input type='number' placeholder='altura base (em pixels)' id='heightInput' onChange={getHeight} required/>
+      <input type='number' placeholder='largura base (em pixels)' id='widthInput' onChange={getWidth} required/>
       <input type='number' placeholder='valor em pixels' id='pixelsInput' onChange={getPixelsValue} required/>
       <button onClick={calculeResposivity}>calcular</button>
       <br />
